@@ -10,11 +10,11 @@ const noticeProvider = require('./noticeProvider')
 exports.posting = async function (req, res) {
     try {
         const { email, title, contents } = req.body;
-        const invalidation = await validator.newPost(email, title, contents);
+        const invalidation = await validator.newNotice(email, title, contents);
 
         if (invalidation) return(res.send(errResponse(invalidation)));
 
-        const noticePosting = await noticeService.posting(title, contents);
+        const noticePosting = await noticeService.posting(email, title, contents);
 
         return(res.send(noticePosting));
     }
@@ -29,15 +29,14 @@ exports.posting = async function (req, res) {
 */
 exports.editNotice = async function (req, res) {
     try {
-
         const noticeId = req.params.noticeid;
-        const invalidation = await validator.oneParams(noticeId);
 
-        if (invalidation) return(res.send(response(invalidation)));
+        const { email, title, contents } = req.body;
+        const invalidation = await validator.newNotice(email, title, contents);
 
-        const {title, contents } = req.body;
+        if (invalidation) return(res.send(errResponse(invalidation)));
 
-        const editNoticeResult = await noticeService.editNotice(noticeId, title, contents);
+        const editNoticeResult = await noticeService.editNotice(email, noticeId, title, contents);
 
         return(res.send(editNoticeResult));
     }
@@ -54,11 +53,9 @@ exports.deleteNotice = async function (req, res) {
     try {
 
         const noticeId = req.params.noticeid;
-        const invalidation = await validator.oneParams(noticeId);
+        const email  = req.body.email;
 
-        if (invalidation) return(res.send(response(invalidation)));
-
-        const deleteNoticeResult = await noticeService.deleteNotice(noticeId);
+        const deleteNoticeResult = await noticeService.deleteNotice(email, noticeId);
 
         return(res.send(deleteNoticeResult));
     }
@@ -90,8 +87,8 @@ exports.noticeList = async function (req, res) {
 exports.noticeDetail = async function (req, res) {
     try {
 
-        const noticeId = req.params.noticeid;
-        const invalidation = await validator.oneParams(noticeId);
+        const noticeId = req.query.noticeid;
+        const invalidation = await validator.oneQuery(noticeId);
 
         if (invalidation) return(res.send(response(invalidation)));
 

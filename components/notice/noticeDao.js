@@ -6,7 +6,7 @@ exports.insertNotice = async function (connection, newNoticeInfo) {
     `; //newNoticeInfo [Title, Contents]
 
     const insertNoticeResult = await connection.query(insertNoticeQuery, newNoticeInfo);
-    return insertNoticeResult;
+    return insertNoticeResult[0];
 }
 
 exports.selectNoticeByNoticeID = async function (connection, noticeID) {

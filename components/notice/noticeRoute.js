@@ -8,12 +8,12 @@ module.exports = function(app){
     app.put('/notice/edit/:noticeid', notice.editNotice);
 
     // 3. 공지사항 삭제
-    app.put('notice/delete/:noticeid', notice.deleteNotice);
+    app.put('/notice/delete/:noticeid', notice.deleteNotice);
 
     // 4. 공지사항 목록
     app.get('/notice/list', notice.noticeList);
 
-    // 5. 공지사항 세부사항
-    app.put('/notice/detail/:noticeid', notice.noticeDetail);
+    // 5. 공지사항 세부사항 + query (noticeid)
+    app.get('/notice/detail', notice.noticeDetail);
 
 };

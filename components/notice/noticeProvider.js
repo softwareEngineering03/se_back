@@ -7,11 +7,11 @@ exports.itembyNoticeId = withConnection(async (connection, noticeId)=>{
 });
 
 exports.allNoticeList = withConnection(async (connection) => {
-    const noticeList = await noticeDao.getNoticeList(connection);
+    const [noticeList] = await noticeDao.getNoticeList(connection);
     return noticeList;
 });
 
 exports.noticeDetail = withConnection(async (connection, noticeId) => {
-    const noticeDetail = await noticeDao.getNoticeDetail(connection, noticeId);
-    return noticeDetail;
+    const [noticeDetail] = await noticeDao.getNoticeDetail(connection, noticeId);
+    return noticeDetail[0];
 });
