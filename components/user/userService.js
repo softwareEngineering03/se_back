@@ -25,8 +25,8 @@ exports.login = async(email, password) =>{
 
 
 exports.signUp = withConnection(async (connection, email, password, name, authencity) => {
-    const userInfo = await userProvider.usersbyEmail(email);
-    if (userInfo.length >= 1) return errResponse(resStatus.USER_REDUNDANT_EMAIL);
+    const userInfo = await userProvider.userbyEmail(email);
+    if (userInfo) return errResponse(resStatus.USER_REDUNDANT_EMAIL);
 
     const encryptedData = await encryptedPassword.createHashedPassword(password);
     const hashedPassword = encryptedData.hashedPassword;

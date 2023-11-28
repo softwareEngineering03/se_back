@@ -10,12 +10,12 @@ exports.selectUserbyEmail = async function (connection, email) {
     return userInfo;
 }
 
-exports.selectAdminbyEmail(email) = async function (connection, email) {
+exports.selectAdminbyEmail = async function (connection, email) {
 
     const selectAdminbyEmailQuery = `
     SELECT *
     FROM User
-    WHERE Email = ? ADN Authencity = 'M';
+    WHERE Email = ? AND Authencity = 'M';
     `;
     const adminInfo = await connection.query(selectAdminbyEmailQuery, email);
 
@@ -24,7 +24,7 @@ exports.selectAdminbyEmail(email) = async function (connection, email) {
 
 exports.insertUser = async function (connection, newUserInfo) {
     const insertUserQuery = `
-    INSERT INTO User(Email, Password, Salt, Name, Autencity)
+    INSERT INTO User(Email, Password, Salt, Name, Authencity)
     VALUES (?, ?, ?, ?, ?);
     `;
     const insertUserResult = await connection.query(insertUserQuery, newUserInfo);
