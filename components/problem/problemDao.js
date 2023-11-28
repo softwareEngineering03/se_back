@@ -19,3 +19,13 @@ exports.selectProblemByType = async function (connection, typeAndDifficulty) {
     const selectedProblems = await connection.query(selectProblemByTypeQuery, typeAndDifficulty);
     return selectedProblems;
 }
+
+exports.insertProblem = async function (connection, problemInfo) {
+    const insertProblemQuery = `
+    INSERT INTO Problem(ProblemID, ProblemTitle, ProblemLink, Type, Difficulty, Company)
+    VALUES (?, ?, ?, ?, ?, ?);
+    `;
+
+    const insertProblemResult = await connection.query(insertProblemQuery, problemInfo);
+    return insertProblemResult;
+}

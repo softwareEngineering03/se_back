@@ -1,3 +1,7 @@
+#SECRET
+config/secret.js
+helpers/encrypt.js
+
 # Logs
 logs
 *.log

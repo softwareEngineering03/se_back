@@ -1,0 +1,28 @@
+{
+  "name": "softwareengineering",
+  "version": "1.0.0",
+  "description": "",
+  "main" : "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softwareEngineering03/se_back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/softwareEngineering03/se_back/issues"
+  },
+  "homepage": "https://github.com/softwareEngineering03/se_back#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.6.5",
+    "nodemon": "^3.0.1"
+  }
+}
