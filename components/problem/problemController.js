@@ -9,9 +9,6 @@ const problemProvider = require('./problemProvider')
 exports.problemsByCompany = async function (req, res) {
     try {
         const company = req.params.company;
-        const invalidation = await validator.oneParams(company);
-
-        if (invalidation) return(res.send(errResponse(invalidation)));
 
         const requestedProblems = await problemProvider.problemByCompany(company);
 
@@ -31,9 +28,6 @@ exports.problemsByType = async function (req, res) {
 
         const problemType = req.params.type;
         const difficulty = req.params.difficulty;
-        const invalidation = await validator.twoParams(problemType, difficulty);
-
-        if (invalidation) return(res.send(response(invalidation)));
 
         const typeAndDifficulty = [problemType, difficulty];
 

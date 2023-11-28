@@ -31,6 +31,7 @@ module.exports = {
     // Problem
     PROBLEM_BY_COMPANY_SUCCESS : { "result": true, "code": 5000, "message":"요청하신 기업 별 추천 문제를 불러왔어요." },
     PROBLEM_BY_TYPE_SUCCESS : { "result": true, "code": 5001, "message":"요청하신 알고리즘 유형의 문제를 불러왔어요." },
+    PROBLEM_ADD_SUCCESS : { "result": true, "code": 5002, "message":"문제 등록을 완료했습니다." },
 
     //Connection, Transaction 등의 서버 오류
     DB_ERROR : { "result": false, "code": 4000, "message": "데이터 베이스 에러"},

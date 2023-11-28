@@ -2,7 +2,7 @@ const problemDao = require('./problemDao');
 const withConnection = require('../../config/connection')
 
 exports.problemByCompany = withConnection(async (connection, company)=>{
-    const [requestedProblems] = await problemDao.selectNoticeByNoticeID(connection, company);
+    const [requestedProblems] = await problemDao.selectProblemsByCompany(connection, company);
     return requestedProblems;
 });
 
