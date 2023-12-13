@@ -45,7 +45,7 @@ exports.updateNotice = async function(connection, updateNoticeInfo) {
 
 exports.getNoticeList = async function (connection) {
     const getNoticeListQuery = `
-    SELECT Title, Date, Status
+    SELECT NoticeID, Title, Date, Status
     FROM Notice;
     `;
 

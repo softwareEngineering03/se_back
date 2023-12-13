@@ -1,6 +1,7 @@
 const secret = require('./config/secret');
 const express = require('express');
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 
 
@@ -12,6 +13,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json());
 app.use(express.static('src'));
+app.use(bodyParser.json());
 
 require('./components/user/userRoute')(app);
 require('./components/notice/noticeRoute')(app);

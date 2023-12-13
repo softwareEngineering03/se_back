@@ -54,6 +54,7 @@ exports.deleteNotice = async function (req, res) {
 
         const noticeId = req.params.noticeid;
         const email  = req.body.email;
+        console.log(email)
 
         const deleteNoticeResult = await noticeService.deleteNotice(email, noticeId);
 
@@ -73,7 +74,12 @@ exports.noticeList = async function (req, res) {
     try {
         const noticeListResult = await noticeProvider.allNoticeList();
 
-        return(res.send(response(resStatus.NOTICE_LIST_SUCCESS, noticeListResult)));
+        var notices = noticeListResult
+
+        for(var i = 0; i < notices.length; i++)
+            notices[i]['Date']= notices[i]['Date'].toISOString().split('T')[0];
+
+        return(res.send(response(resStatus.NOTICE_LIST_SUCCESS, notices)));
     }
 
     catch (e) {
